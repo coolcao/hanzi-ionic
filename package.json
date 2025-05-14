@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "assets-gen": "yarn capacitor-assets generate",
     "test": "ng test",
     "lint": "ng lint"
   },
@@ -50,6 +51,7 @@
     "@angular/cli": "^19.0.0",
     "@angular/compiler-cli": "^19.0.0",
     "@angular/language-service": "^19.0.0",
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "7.2.0",
     "@ionic/angular-toolkit": "^12.0.0",
     "@types/howler": "^2.2.12",
