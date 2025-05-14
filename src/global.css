@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 设置全局字体 */
+:root {
+  font-family: "KaiTi", "楷体", STKaiti, "华文楷体", serif;
+}
+
+@theme {
+  --color-primary: #ff85a2;
+  --color-secondary: #ffd3b5;
+  --color-accent: #95e1d3;
+  --color-neutral: #f9f7f7;
+  --color-dark: #2a363b;
+}
+
+/* 动态颜色，默认primary */
+html {
+  --dynamic-color: var(--color-primary);
+}
+/* 背景颜色 */
+.bg-dynamic,
+.dark .dark\:bg-dynamic,
+.hover\:bg-dynamic:hover,
+.dark .dark\:hover\:bg-dynamic:hover {
+  background-color: var(--dynamic-color);
+}
+.bg-dynamic\/10,
+.dark .dark\:bg-dynamic\/10,
+.hover\:bg-dynamic\/10:hover,
+.dark .dark\:hover\:bg-dynamic\/10:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 10%);
+}
+.bg-dynamic\/20,
+.dark .dark\:bg-dynamic\/20,
+.hover\:bg-dynamic\/20:hover,
+.dark .dark\:hover\:bg-dynamic\/20:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 20%);
+}
+.bg-dynamic\/30,
+.dark .dark\:bg-dynamic\/30,
+.hover\:bg-dynamic\/30:hover,
+.dark .dark\:hover\:bg-dynamic\/30:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 30%);
+}
+.bg-dynamic\/40,
+.dark .dark\:bg-dynamic\/40,
+.hover\:bg-dynamic\/40:hover,
+.dark .dark\:hover\:bg-dynamic\/40:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 40%);
+}
+.bg-dynamic\/50,
+.dark .dark\:bg-dynamic\/50,
+.hover\:bg-dynamic\/50:hover,
+.dark .dark\:hover\:bg-dynamic\/50:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 50%);
+}
+.bg-dynamic\/60,
+.dark .dark\:bg-dynamic\/60,
+.hover\:bg-dynamic\/60:hover,
+.dark .dark\:hover\:bg-dynamic\/60:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 60%);
+}
+.bg-dynamic\/70,
+.dark .dark\:bg-dynamic\/70,
+.hover\:bg-dynamic\/70:hover,
+.dark .dark\:hover\:bg-dynamic\/70:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 70%);
+}
+.bg-dynamic\/80,
+.dark .dark\:bg-dynamic\/80,
+.hover\:bg-dynamic\/80:hover,
+.dark .dark\:hover\:bg-dynamic\/80:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 80%);
+}
+.bg-dynamic\/90,
+.dark .dark\:bg-dynamic\/90,
+.hover\:bg-dynamic\/90:hover,
+.dark .dark\:hover\:bg-dynamic\/90:hover {
+  background-color: rgb(from var(--dynamic-color) r g b / 90%);
+}
+/* 文字 */
+.text-dynamic,
+.dark .dark\:text-dynamic,
+.hover\:text-dynamic:hover,
+.dark .dark\:hover\:text-dynamic:hover {
+  color: var(--dynamic-color);
+}
+.text-dynamic\/10,
+.dark .dark\:text-dynamic\/10,
+.hover\:text-dynamic\/10:hover,
+.dark .dark\:hover\:text-dynamic\/10:hover {
+  color: rgb(from var(--dynamic-color) r g b / 10%);
+}
+.text-dynamic\/20,
+.dark .dark\:text-dynamic\/20,
+.hover\:text-dynamic\/20:hover,
+.dark .dark\:hover\:text-dynamic\/20:hover {
+  color: rgb(from var(--dynamic-color) r g b / 20%);
+}
+.text-dynamic\/30,
+.dark .dark\:text-dynamic\/30,
+.hover\:text-dynamic\/30:hover,
+.dark .dark\:hover\:text-dynamic\/30:hover {
+  color: rgb(from var(--dynamic-color) r g b / 30%);
+}
+.text-dynamic\/40,
+.dark .dark\:text-dynamic\/40,
+.hover\:text-dynamic\/40:hover,
+.dark .dark\:hover\:text-dynamic\/40:hover {
+  color: rgb(from var(--dynamic-color) r g b / 40%);
+}
+.text-dynamic\/50,
+.dark .dark\:text-dynamic\/50,
+.hover\:text-dynamic\/50:hover,
+.dark .dark\:hover\:text-dynamic\/50:hover {
+  color: rgb(from var(--dynamic-color) r g b / 50%);
+}
+.text-dynamic\/60,
+.dark .dark\:text-dynamic\/60,
+.hover\:text-dynamic\/60:hover,
+.dark .dark\:hover\:text-dynamic\/60:hover {
+  color: rgb(from var(--dynamic-color) r g b / 60%);
+}
+.text-dynamic\/70,
+.dark .dark\:text-dynamic\/70,
+.hover\:text-dynamic\/70:hover,
+.dark .dark\:hover\:text-dynamic\/70:hover {
+  color: rgb(from var(--dynamic-color) r g b / 70%);
+}
+.text-dynamic\/80,
+.dark .dark\:text-dynamic\/80,
+.hover\:text-dynamic\/80:hover,
+.dark .dark\:hover\:text-dynamic\/80:hover {
+  color: rgb(from var(--dynamic-color) r g b / 80%);
+}
+.text-dynamic\/90,
+.dark .dark\:text-dynamic\/90,
+.hover\:text-dynamic\/90:hover,
+.dark .dark\:hover\:text-dynamic\/90:hover {
+  color: rgb(from var(--dynamic-color) r g b / 90%);
+}

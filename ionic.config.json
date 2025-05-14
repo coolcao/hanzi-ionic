@@ -1,0 +1,7 @@
+{
+  "name": "hanzi-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
