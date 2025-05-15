@@ -1,12 +1,12 @@
 <!-- 欢迎区域 -->
 <section class="animate-fadeIn mb-12 text-center">
   <h2
-    class="text-dark mb-4 text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-shadow-lg dark:text-white"
+    class="text-shadow-lg mb-4 text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-dark dark:text-white"
   >
-    欢迎来到<span class="text-primary relative">
+    欢迎来到<span class="relative text-primary">
       宝宝识汉字
       <div
-        class="bg-secondary absolute right-0 -bottom-2 left-0 h-2 rounded-full"
+        class="absolute -bottom-2 left-0 right-0 h-2 rounded-full bg-secondary"
       ></div>
     </span>
     乐园
@@ -26,18 +26,38 @@
     [routerLink]="['/', 'learn']"
     class="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-800"
   >
-    <div class="bg-primary/10 dark:bg-primary/20 relative h-48 overflow-hidden">
+    <div class="relative h-48 overflow-hidden bg-primary/10 dark:bg-primary/20">
       <div class="absolute inset-0 flex items-center justify-center">
-        <i class="fa-solid fa-graduation-cap text-primary text-6xl"></i>
+        <i class="fa-solid fa-graduation-cap text-6xl text-primary"></i>
       </div>
       <div
-        class="bg-primary/20 dark:bg-primary/30 absolute -top-10 -right-10 h-40 w-40 rounded-full blur-2xl"
+        class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-2xl dark:bg-primary/30"
       ></div>
     </div>
     <div class="p-6">
-      <h3 class="text-dark mb-2 text-xl font-bold dark:text-white">学习模式</h3>
+      <h3 class="mb-2 text-xl font-bold text-dark dark:text-white">学习模式</h3>
       <p class="mb-4 text-gray-600 dark:text-gray-300">
         从基础汉字开始，循序渐进地学习，配有详细的发音和解释。
+      </p>
+    </div>
+  </div>
+
+  <div
+    [routerLink]="['/', 'draw']"
+    class="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-800"
+  >
+    <div class="relative h-48 overflow-hidden bg-accent/10 dark:bg-accent/20">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <i class="fa-solid fa-paint-brush text-6xl text-accent"></i>
+      </div>
+      <div
+        class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/20 blur-2xl dark:bg-accent/30"
+      ></div>
+    </div>
+    <div class="p-6">
+      <h3 class="mb-2 text-xl font-bold text-dark dark:text-white">笔画涂鸦</h3>
+      <p class="mb-4 text-gray-600 dark:text-gray-300">
+        练习汉字的笔画顺序，加深汉字书写能力。
       </p>
     </div>
   </div>
@@ -47,43 +67,21 @@
     class="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-800"
   >
     <div
-      class="bg-secondary/10 dark:bg-secondary/20 relative h-48 overflow-hidden"
+      class="relative h-48 overflow-hidden bg-secondary/10 dark:bg-secondary/20"
     >
       <div class="absolute inset-0 flex items-center justify-center">
-        <i class="fa-solid fa-gamepad text-secondary text-6xl"></i>
+        <i class="fa-solid fa-gamepad text-6xl text-secondary"></i>
       </div>
       <div
-        class="bg-secondary/20 dark:bg-secondary/30 absolute -top-10 -right-10 h-40 w-40 rounded-full blur-2xl"
+        class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-secondary/20 blur-2xl dark:bg-secondary/30"
       ></div>
     </div>
     <div class="p-6">
-      <h3 class="text-dark mb-2 text-xl font-bold dark:text-white">
+      <h3 class="mb-2 text-xl font-bold text-dark dark:text-white">
         游戏模式（敬请期待）
       </h3>
       <p class="mb-4 text-gray-600 dark:text-gray-300">
         通过有趣的游戏巩固所学汉字，让学习变得更加轻松愉快。
-      </p>
-    </div>
-  </div>
-
-  <!-- 测试模式卡片 -->
-  <div
-    class="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-800"
-  >
-    <div class="bg-accent/10 dark:bg-accent/20 relative h-48 overflow-hidden">
-      <div class="absolute inset-0 flex items-center justify-center">
-        <i class="fa-solid fa-check-circle text-accent text-6xl"></i>
-      </div>
-      <div
-        class="bg-accent/20 dark:bg-accent/30 absolute -top-10 -right-10 h-40 w-40 rounded-full blur-2xl"
-      ></div>
-    </div>
-    <div class="p-6">
-      <h3 class="text-dark mb-2 text-xl font-bold dark:text-white">
-        测试模式（敬请期待）
-      </h3>
-      <p class="mb-4 text-gray-600 dark:text-gray-300">
-        检验学习成果，查漏补缺，针对性地提升汉字水平。
       </p>
     </div>
   </div>
@@ -92,10 +90,10 @@
 <!-- 热门汉字 -->
 <section class="mb-12">
   <div class="mb-6 flex items-center justify-between">
-    <h2 class="text-dark text-2xl font-bold dark:text-white">热门汉字</h2>
+    <h2 class="text-2xl font-bold text-dark dark:text-white">热门汉字</h2>
     <a
       href="#"
-      class="text-primary dark:text-primary flex items-center hover:underline"
+      class="flex items-center text-primary hover:underline dark:text-primary"
     >
       查看更多 <i class="fa-solid fa-arrow-right ml-1"></i>
     </a>
@@ -109,7 +107,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">rì</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         日
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">太阳</p>
@@ -119,7 +117,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">yuè</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         月
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">月亮</p>
@@ -129,7 +127,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">shuǐ</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         水
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">水流</p>
@@ -139,7 +137,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">huǒ</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         火
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">火焰</p>
@@ -149,7 +147,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">shān</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         山
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">山峰</p>
@@ -159,7 +157,7 @@
       class="rounded-xl bg-white p-4 text-center shadow-md transition-all duration-200 hover:shadow-lg dark:bg-gray-800"
     >
       <p class="text-gray-600 dark:text-gray-300">mù</p>
-      <div class="text-primary mb-2 text-[clamp(2rem,3vw,3rem)] font-bold">
+      <div class="mb-2 text-[clamp(2rem,3vw,3rem)] font-bold text-primary">
         木
       </div>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">树木</p>

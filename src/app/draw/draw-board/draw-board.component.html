@@ -1,0 +1,37 @@
+<!-- 汉字主题分类 -->
+<section class="mb-12">
+  <h2
+    class="text-dark mt-0 mb-0 text-center text-5xl font-bold md:mt-5 2xl:mt-10 dark:text-white"
+  >
+    主题分类
+  </h2>
+
+  <div
+    class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-10 md:grid-cols-2 lg:grid-cols-3 xl:mt-15 2xl:mt-20"
+  >
+    @for (g of groups(); track $index; let idx = $index) {
+      <div
+        [style.--dynamic-color]="g.color"
+        [routerLink]="['/', 'draw', 'group', g.id]"
+        class="bounce-hover group cursor-pointer rounded-2xl bg-white p-6 transition-all duration-300 hover:shadow-xl dark:bg-gray-800"
+      >
+        <div class="mb-4 flex items-center justify-between">
+          <div
+            class="bg-dynamic/30 flex h-16 w-16 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110"
+          >
+            <i [ngClass]="[g.icon]" class="text-dynamic text-2xl"></i>
+          </div>
+          <div class="text-dynamic text-5xl font-bold">
+            {{ g.character }}
+          </div>
+        </div>
+        <h3 class="text-dark mb-2 text-2xl font-bold dark:text-white">
+          {{ g.group }}
+        </h3>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          {{ g.desc }}
+        </p>
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,206 @@
+<!-- 主内容区 -->
+<main
+  [style.--dynamic-color]="color()"
+  class="container mx-auto px-0 pt-8 pb-10 select-none sm:px-2 md:px-4 xl:px-6"
+>
+  <!-- 主题标题 -->
+  @if (group()) {
+    <section class="mb-10">
+      <div class="bg-dynamic/10 dark:bg-dynamic/20 rounded-3xl p-6 pb-8">
+        <div class="mb-6 flex items-center space-x-4">
+          <div
+            class="bg-dynamic flex h-20 w-20 items-center justify-center rounded-full text-white shadow-lg"
+          >
+            <i [ngClass]="[group()?.icon]" class="text-3xl"></i>
+          </div>
+          <div>
+            <h2
+              class="text-dark text-2xl font-bold md:text-3xl dark:text-white"
+            >
+              {{ group()!.group }}
+            </h2>
+            <p class="text-gray-600 md:text-lg dark:text-gray-300">
+              {{ group()!.desc }}
+            </p>
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8"
+        >
+          @for (hanzi of group()!.hanzi; track $index) {
+            <div
+              (click)="showDetail(hanzi)"
+              class="character-card flex transform cursor-pointer flex-col items-center justify-center rounded-2xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg dark:bg-gray-800"
+            >
+              <p class="text-xl text-gray-600 dark:text-gray-300">
+                {{ hanzi.pinyin }}
+              </p>
+              <div class="text-dynamic mb-2 text-7xl font-bold">
+                {{ hanzi.character }}
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  } @else {
+    <div class="flex flex-col items-center justify-center p-8 text-center">
+      <div class="mb-4 rounded-full bg-gray-100 p-6 dark:bg-gray-700">
+        <i class="text-dynamic fa-solid fa-book-open text-4xl"></i>
+      </div>
+      <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-white">
+        请先选择一个汉字分组
+      </h3>
+    </div>
+  }
+
+  <!-- 更多主题 -->
+  <section class="px-4">
+    <h3 class="text-dark mb-8 text-2xl font-bold dark:text-white">更多主题</h3>
+
+    <div class="grid grid-cols-1 gap-6 text-xl sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="pop flex transform cursor-pointer items-center space-x-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg dark:bg-gray-800"
+      >
+        <div
+          class="bg-secondary/20 flex h-14 w-14 items-center justify-center rounded-full"
+        >
+          <i class="fa-solid fa-cloud text-secondary text-2xl"></i>
+        </div>
+        <span class="text-dark text-lg font-bold dark:text-white"
+          >自然现象</span
+        >
+      </div>
+
+      <div
+        class="pop flex cursor-pointer items-center space-x-3 rounded-2xl bg-white p-4 shadow-md dark:bg-gray-800"
+      >
+        <div
+          class="bg-accent/20 flex h-10 w-10 items-center justify-center rounded-full"
+        >
+          <i class="fa-solid fa-sun text-accent"></i>
+        </div>
+        <span class="text-dark font-bold dark:text-white">天气</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 汉字详情模态框 -->
+<div
+  id="character-modal"
+  [style.--dynamic-color]="color()"
+  [ngClass]="{ hidden: !hanzi() }"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-300"
+>
+  <div
+    class="mx-1 h-full w-full max-w-4xl scale-95 transform overflow-y-auto rounded-3xl bg-white p-0 shadow-2xl transition-transform duration-300 sm:mx-2 md:mx-4 md:h-auto md:max-h-[90vh] dark:bg-gray-800"
+  >
+    <!-- 模态框头部 -->
+    <div
+      class="bg-dynamic dark:bg-dynamic/30 flex items-center justify-end p-4"
+    >
+      <button
+        id="close-modal"
+        (click)="hanzi.set(null)"
+        class="cursor-pointer text-gray-700 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500"
+      >
+        <i class="fa-solid fa-times text-3xl"></i>
+      </button>
+    </div>
+
+    <!-- 模态框内容 -->
+    <div class="p-2 sm:p-4 md:p-8">
+      <div class="flex flex-col gap-8">
+        <div
+          class="text-dynamic mb-2 text-center text-5xl font-bold sm:text-6xl md:text-7xl xl:text-8xl"
+          id="character-display"
+        >
+          {{ hanzi()?.pinyin }}
+        </div>
+
+        <div class="mb-4 rounded-2xl bg-gray-100 p-4 dark:bg-gray-700">
+          <!-- 田字格背景 -->
+          <div class="relative">
+            <div
+              class="grid-background absolute inset-0 z-0 flex items-center justify-center"
+            >
+              <svg
+                [attr.width]="containerWidth()"
+                [attr.height]="containerWidth()"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <pattern
+                    id="grid"
+                    [attr.width]="containerWidth()"
+                    [attr.height]="containerWidth()"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <!-- 外框 -->
+                    <rect
+                      [attr.width]="containerWidth()"
+                      [attr.height]="containerWidth()"
+                      fill="none"
+                      [attr.stroke]="darkMode() ? '#666' : '#ddd'"
+                      stroke-width="2"
+                    />
+                    <!-- 横线 -->
+                    <line
+                      x1="0"
+                      [attr.y1]="containerWidth() / 2"
+                      [attr.x2]="containerWidth()"
+                      [attr.y2]="containerWidth() / 2"
+                      [attr.stroke]="darkMode() ? '#666' : '#ddd'"
+                      stroke-width="1"
+                    />
+                    <!-- 竖线 -->
+                    <line
+                      [attr.x1]="containerWidth() / 2"
+                      y1="0"
+                      [attr.x2]="containerWidth() / 2"
+                      [attr.y2]="containerWidth()"
+                      [attr.stroke]="darkMode() ? '#666' : '#ddd'"
+                      stroke-width="1"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+              </svg>
+            </div>
+            <div
+              #writerContainer
+              id="writer-container"
+              class="relative z-10 flex h-full w-full justify-center"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模态框底部 -->
+    <div class="flex justify-between bg-gray-50 p-4 dark:bg-gray-700">
+      <button
+        id="prev-character"
+        (click)="prevCharacter()"
+        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+      >
+        <i class="fa-solid fa-arrow-left mr-1"></i> 上一个
+      </button>
+      <button
+        id="redo"
+        (click)="redo()"
+        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+      >
+        <i class="fa-solid fa-rotate-right mr-1"></i> 重做
+      </button>
+      <button
+        id="next-character"
+        (click)="nextCharacter()"
+        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+      >
+        下一个 <i class="fa-solid fa-arrow-right ml-1"></i>
+      </button>
+    </div>
+  </div>
+</div>

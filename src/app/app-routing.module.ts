@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: 'start', component: StartComponent },
   { path: 'learn', loadChildren: () => import('./learn/learn.module').then(m => m.LearnModule) },
+  { path: 'draw', loadChildren: () => import('./draw/draw.module').then(m => m.DrawModule) },
 ];
 
 @NgModule({
