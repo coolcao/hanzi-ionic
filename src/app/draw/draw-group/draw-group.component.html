@@ -1,7 +1,7 @@
 <!-- 主内容区 -->
 <main
   [style.--dynamic-color]="color()"
-  class="container mx-auto px-0 pt-8 pb-10 select-none sm:px-2 md:px-4 xl:px-6"
+  class="container mx-auto select-none px-0 pb-10 pt-8 sm:px-2 md:px-4 xl:px-6"
 >
   <!-- 主题标题 -->
   @if (group()) {
@@ -15,11 +15,11 @@
           </div>
           <div>
             <h2
-              class="text-dark text-2xl font-bold md:text-3xl dark:text-white"
+              class="text-2xl font-bold text-dark dark:text-white md:text-3xl"
             >
               {{ group()!.group }}
             </h2>
-            <p class="text-gray-600 md:text-lg dark:text-gray-300">
+            <p class="text-gray-600 dark:text-gray-300 md:text-lg">
               {{ group()!.desc }}
             </p>
           </div>
@@ -56,18 +56,18 @@
 
   <!-- 更多主题 -->
   <section class="px-4">
-    <h3 class="text-dark mb-8 text-2xl font-bold dark:text-white">更多主题</h3>
+    <h3 class="mb-8 text-2xl font-bold text-dark dark:text-white">更多主题</h3>
 
     <div class="grid grid-cols-1 gap-6 text-xl sm:grid-cols-2 lg:grid-cols-3">
       <div
         class="pop flex transform cursor-pointer items-center space-x-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg dark:bg-gray-800"
       >
         <div
-          class="bg-secondary/20 flex h-14 w-14 items-center justify-center rounded-full"
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20"
         >
-          <i class="fa-solid fa-cloud text-secondary text-2xl"></i>
+          <i class="fa-solid fa-cloud text-2xl text-secondary"></i>
         </div>
-        <span class="text-dark text-lg font-bold dark:text-white"
+        <span class="text-lg font-bold text-dark dark:text-white"
           >自然现象</span
         >
       </div>
@@ -76,11 +76,11 @@
         class="pop flex cursor-pointer items-center space-x-3 rounded-2xl bg-white p-4 shadow-md dark:bg-gray-800"
       >
         <div
-          class="bg-accent/20 flex h-10 w-10 items-center justify-center rounded-full"
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20"
         >
           <i class="fa-solid fa-sun text-accent"></i>
         </div>
-        <span class="text-dark font-bold dark:text-white">天气</span>
+        <span class="font-bold text-dark dark:text-white">天气</span>
       </div>
     </div>
   </section>
@@ -91,14 +91,14 @@
   id="character-modal"
   [style.--dynamic-color]="color()"
   [ngClass]="{ hidden: !hanzi() }"
-  class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-300"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-300"
 >
   <div
-    class="mx-1 h-full w-full max-w-4xl scale-95 transform overflow-y-auto rounded-3xl bg-white p-0 shadow-2xl transition-transform duration-300 sm:mx-2 md:mx-4 md:h-auto md:max-h-[90vh] dark:bg-gray-800"
+    class="mx-1 flex w-full max-w-4xl scale-95 transform flex-col items-center justify-center overflow-y-auto rounded-3xl bg-white p-0 shadow-2xl transition-transform duration-300 dark:bg-gray-800 sm:mx-2 md:mx-4 md:h-auto md:max-h-[90vh]"
   >
     <!-- 模态框头部 -->
     <div
-      class="bg-dynamic dark:bg-dynamic/30 flex items-center justify-end p-4"
+      class="bg-dynamic dark:bg-dynamic/30 flex w-full items-center justify-end p-4"
     >
       <button
         id="close-modal"
@@ -110,8 +110,8 @@
     </div>
 
     <!-- 模态框内容 -->
-    <div class="p-2 sm:p-4 md:p-8">
-      <div class="flex flex-col gap-8">
+    <div class="flex flex-row items-center justify-between p-2 sm:p-4 md:p-8">
+      <div class="flex flex-col gap-2">
         <div
           class="text-dynamic mb-2 text-center text-5xl font-bold sm:text-6xl md:text-7xl xl:text-8xl"
           id="character-display"
@@ -126,21 +126,21 @@
               class="grid-background absolute inset-0 z-0 flex items-center justify-center"
             >
               <svg
-                [attr.width]="containerWidth()"
-                [attr.height]="containerWidth()"
+                [attr.width]="containerSize()"
+                [attr.height]="containerSize()"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
                   <pattern
                     id="grid"
-                    [attr.width]="containerWidth()"
-                    [attr.height]="containerWidth()"
+                    [attr.width]="containerSize()"
+                    [attr.height]="containerSize()"
                     patternUnits="userSpaceOnUse"
                   >
                     <!-- 外框 -->
                     <rect
-                      [attr.width]="containerWidth()"
-                      [attr.height]="containerWidth()"
+                      [attr.width]="containerSize()"
+                      [attr.height]="containerSize()"
                       fill="none"
                       [attr.stroke]="darkMode() ? '#666' : '#ddd'"
                       stroke-width="2"
@@ -148,18 +148,18 @@
                     <!-- 横线 -->
                     <line
                       x1="0"
-                      [attr.y1]="containerWidth() / 2"
-                      [attr.x2]="containerWidth()"
-                      [attr.y2]="containerWidth() / 2"
+                      [attr.y1]="containerSize() / 2"
+                      [attr.x2]="containerSize()"
+                      [attr.y2]="containerSize() / 2"
                       [attr.stroke]="darkMode() ? '#666' : '#ddd'"
                       stroke-width="1"
                     />
                     <!-- 竖线 -->
                     <line
-                      [attr.x1]="containerWidth() / 2"
+                      [attr.x1]="containerSize() / 2"
                       y1="0"
-                      [attr.x2]="containerWidth() / 2"
-                      [attr.y2]="containerWidth()"
+                      [attr.x2]="containerSize() / 2"
+                      [attr.y2]="containerSize()"
                       [attr.stroke]="darkMode() ? '#666' : '#ddd'"
                       stroke-width="1"
                     />
@@ -179,25 +179,27 @@
     </div>
 
     <!-- 模态框底部 -->
-    <div class="flex justify-between bg-gray-50 p-4 dark:bg-gray-700">
+    <div
+      class="mb-0 flex w-full justify-between bg-gray-50 p-4 dark:bg-gray-700"
+    >
       <button
         id="prev-character"
         (click)="prevCharacter()"
-        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
       >
         <i class="fa-solid fa-arrow-left mr-1"></i> 上一个
       </button>
       <button
         id="redo"
         (click)="redo()"
-        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
       >
         <i class="fa-solid fa-rotate-right mr-1"></i> 重做
       </button>
       <button
         id="next-character"
         (click)="nextCharacter()"
-        class="text-dark cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
       >
         下一个 <i class="fa-solid fa-arrow-right ml-1"></i>
       </button>

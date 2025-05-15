@@ -18,12 +18,17 @@ import { AudioService } from '../../service/audio.service';
 export class DrawGroupComponent implements OnInit, AfterViewInit {
   @ViewChild('writerContainer')
   private writerContainer!: ElementRef;
+
+  // 屏幕宽度和高度
+  innerWidth = signal(window.innerWidth);
+  innerHeight = signal(window.innerHeight);
+
   // 字容器的宽度
   containerWidth = signal(300);
   containerHeight = signal(300);
   // 边长
   containerSize = computed(() => {
-    return Math.min(this.containerWidth(), this.containerHeight());
+    return Math.min(this.containerWidth(), this.containerHeight(), 300);
   });
 
   private writer: HanziWriter | null = null;
@@ -88,13 +93,29 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
       path: '/learn/board',
       name: 'Back'
     });
-
+    // 开始监听屏幕尺寸变化
+    this.resizeObserver.observe(document.body);
   }
 
   ngOnDestroy(): void {
+    // 停止监听屏幕尺寸变化
+    this.resizeObserver.disconnect();
   }
   ngAfterViewInit(): void {
   }
+
+  // 监听屏幕尺寸变化
+  private resizeObserver = new ResizeObserver(() => {
+    this.innerWidth.set(window.innerWidth);
+    this.innerHeight.set(window.innerHeight);
+    // 如果当前有显示汉字，则需要重新计算容器尺寸
+    if (this.hanzi()) {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      this.containerWidth.set(width * 0.7);
+      this.containerHeight.set(height * 0.7);
+    }
+  });
 
   private initWriter(character: string) {
     // 清理容器内的内容
