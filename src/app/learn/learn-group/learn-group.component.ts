@@ -111,13 +111,19 @@ export class LearnGroupComponent implements OnInit, AfterViewInit {
     this.writer?.animateCharacter();
   }
 
-  showDetail(hanzi: Hanzi) {
+  async showDetail(hanzi: Hanzi) {
     this.hanzi.set(hanzi);
     this.initWriter(hanzi.character);
     const idx = this.group()?.hanzi.findIndex(h => h.character === hanzi.character);
     if (idx !== undefined && idx !== -1) {
       this.idx.set(idx);
     }
+    // 等待500ms
+    await this.waitSeconds(0.5);
+    // 开始动画
+    this.animateCharacter();
+    // 播放音频
+    await this.playAudio(hanzi);
   }
 
   nextCharacter() {
@@ -140,6 +146,10 @@ export class LearnGroupComponent implements OnInit, AfterViewInit {
     this.audioService.stopAll();
     await this.audioService.preload(hanzi.character, `/assets/audios/characters/${hanzi.character}.mp3`);
     await this.audioService.play(hanzi.character);
+  }
+
+  private async waitSeconds(seconds: number) {
+    return new Promise(resolve => setTimeout(resolve, seconds * 1000));
   }
 
 }
