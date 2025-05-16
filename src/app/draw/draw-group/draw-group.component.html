@@ -190,11 +190,18 @@
         <i class="fa-solid fa-arrow-left mr-1"></i> 上一个
       </button>
       <button
+        id="play"
+        (click)="animateCharacter()"
+        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+      >
+        <i class="fa-solid fa-play mr-1"></i> 播放动画
+      </button>
+      <button
         id="redo"
         (click)="redo()"
         class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
       >
-        <i class="fa-solid fa-rotate-right mr-1"></i> 重做
+        <i class="fa-solid fa-rotate-right mr-1"></i> 涂鸦练习
       </button>
       <button
         id="next-character"

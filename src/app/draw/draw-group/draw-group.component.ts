@@ -163,6 +163,10 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
     }
   }
 
+  animateCharacter() {
+    this.writer?.animateCharacter();
+  }
+
   nextCharacter() {
     if (this.nextId() === -1) {
       return;
