@@ -25,6 +25,12 @@ export class AppComponent {
       } else {
         document.body.classList.remove('dark');
       }
+
+      if (this.store.bodyOverflowHidden()) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     });
   }
 

@@ -185,30 +185,34 @@
       <button
         id="prev-character"
         (click)="prevCharacter()"
-        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="group relative cursor-pointer rounded-full bg-gray-200 p-4 text-2xl text-dark transition-all duration-300 hover:scale-110 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        aria-label="上一个汉字"
       >
-        <i class="fa-solid fa-arrow-left mr-1"></i> 上一个
+        <i class="fa-solid fa-arrow-left group-hover:animate-bounce-left"></i>
       </button>
       <button
         id="play"
         (click)="animateCharacter()"
-        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="group relative cursor-pointer rounded-full bg-gray-200 p-4 text-2xl text-dark transition-all duration-300 hover:scale-110 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        aria-label="播放动画"
       >
-        <i class="fa-solid fa-play mr-1"></i> 播放动画
+        <i class="fa-solid fa-play group-hover:animate-bounce"></i>
       </button>
       <button
         id="redo"
         (click)="redo()"
-        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="group relative cursor-pointer rounded-full bg-gray-200 p-4 text-2xl text-dark transition-all duration-300 hover:scale-110 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        aria-label="涂鸦练习"
       >
-        <i class="fa-solid fa-rotate-right mr-1"></i> 涂鸦练习
+        <i class="fa-solid fa-paintbrush group-hover:animate-bounce"></i>
       </button>
       <button
         id="next-character"
         (click)="nextCharacter()"
-        class="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 font-bold text-dark transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        class="group relative cursor-pointer rounded-full bg-gray-200 p-4 text-2xl text-dark transition-all duration-300 hover:scale-110 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
+        aria-label="下一个汉字"
       >
-        下一个 <i class="fa-solid fa-arrow-right ml-1"></i>
+        <i class="fa-solid fa-arrow-right group-hover:animate-bounce-right"></i>
       </button>
     </div>
   </div>

@@ -10,10 +10,12 @@ export class Store {
   private _groups = signal(data);
   private _back = signal<BackConf | null>(null);
   private _darkMode = signal(true);
+  private _bodyOverflowHidden = signal(false);
 
   groups = this._groups.asReadonly();
   back = this._back.asReadonly();
   darkMode = this._darkMode.asReadonly();
+  bodyOverflowHidden = this._bodyOverflowHidden.asReadonly();
 
   setGroup(group: HanziGroup[]) {
     this._groups.set(group);
@@ -23,5 +25,8 @@ export class Store {
   }
   setDarkMode(darkMode: boolean) {
     this._darkMode.set(darkMode);
+  }
+  setBodyOverflowHidden(bodyOverflowHidden: boolean) {
+    this._bodyOverflowHidden.set(bodyOverflowHidden);
   }
 }

@@ -78,10 +78,10 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
 
   constructor() {
     effect(() => {
-      // 汉字发生变化，停止播放之前的音频
-      if (this.hanzi()) {
-        this.audioService.stopAll();
-      }
+      // 无论是否有汉字，都需要停止所有音频播放
+      this.audioService.stopAll();
+      // 根据是否有汉字来设置body的overflow
+      this.store.setBodyOverflowHidden(!!this.hanzi());
     });
   }
 
