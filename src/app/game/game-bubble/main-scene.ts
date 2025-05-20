@@ -13,6 +13,8 @@ export class MainScene extends Scene {
   private target: string;
   private options: string[];
   private darkMode: boolean = true;
+  // 添加一个标志位，用于防止多次点击
+  private isProcessing: boolean = false;
 
   constructor(target: string, options: string[], darkMode: boolean = true) {
     super({ key: 'MainScene' });
@@ -123,6 +125,16 @@ export class MainScene extends Scene {
   }
 
   private handleClick(selectedHanzi: string) {
+    // 点击处理中时直接返回
+    if (this.isProcessing) {
+      return;
+    }
+    // 设置处理标志位
+    this.isProcessing = true;
+    // 延迟重置标志位，给动画和音效留出时间
+    this.time.delayedCall(500, () => {
+      this.isProcessing = false;
+    });
     if (selectedHanzi === this.state.targetHanzi) {
       this.state.score += 10;
       this.scoreText.setText(`得分: ${this.state.score}`);
