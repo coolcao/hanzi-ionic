@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'start', component: StartComponent },
   { path: 'learn', loadChildren: () => import('./learn/learn.module').then(m => m.LearnModule) },
   { path: 'draw', loadChildren: () => import('./draw/draw.module').then(m => m.DrawModule) },
+  { path: 'game', loadChildren: () => import('./game/game.module').then(m => m.GameModule) },
 ];
 
 @NgModule({

@@ -1,21 +1,21 @@
 <!-- 背景装饰 -->
 <div class="pointer-events-none fixed inset-0 overflow-hidden">
   <div
-    class="bg-primary/20 float absolute top-20 left-10 h-16 w-16 rounded-full blur-2xl"
+    class="float absolute left-10 top-20 h-16 w-16 rounded-full bg-primary/20 blur-2xl"
   ></div>
   <div
-    class="bg-secondary/20 float-delay-1 absolute top-40 right-16 h-20 w-20 rounded-full blur-2xl"
+    class="float-delay-1 absolute right-16 top-40 h-20 w-20 rounded-full bg-secondary/20 blur-2xl"
   ></div>
   <div
-    class="bg-accent/20 float-delay-2 absolute bottom-20 left-20 h-12 w-12 rounded-full blur-2xl"
+    class="float-delay-2 absolute bottom-20 left-20 h-12 w-12 rounded-full bg-accent/20 blur-2xl"
   ></div>
 </div>
 <main
-  class="bg-neutral  dark:bg-dark flex min-h-screen flex-col transition-colors duration-300"
+  class="flex min-h-screen flex-col bg-neutral transition-colors duration-300 dark:bg-dark"
 >
   <!-- 顶部导航栏 -->
   <header
-    class="dark:bg-dark/80 fixed top-0 right-0 left-0 z-50 bg-white/80 shadow-md backdrop-blur-md transition-all duration-300"
+    class="fixed left-0 right-0 top-0 z-50 bg-white/80 shadow-md backdrop-blur-md transition-all duration-300 dark:bg-dark/80"
   >
     <div class="container mx-auto flex items-center justify-between px-4 py-5">
       <div class="h-full min-w-20">
@@ -23,7 +23,7 @@
           <button
             id="back-btn"
             (click)="goBack()"
-            class="text-dark hover:bg-dark/10 flex cursor-pointer items-center space-x-2 rounded-md p-2 text-xl dark:text-white hover:dark:bg-white/10"
+            class="flex cursor-pointer items-center space-x-2 rounded-md p-2 text-xl text-dark hover:bg-dark/10 dark:text-white hover:dark:bg-white/10"
           >
             <i class="fa-solid fa-arrow-left"></i>
             <span>返回</span>
@@ -32,10 +32,10 @@
       </div>
       <div class="flex items-center space-x-2">
         <i
-          class="fa-solid fa-book-open text-primary dark:text-primary text-2xl"
+          class="fa-solid fa-book-open text-2xl text-primary dark:text-primary"
         ></i>
         <h1
-          class="text-dark text-xl font-extrabold md:text-2xl lg:text-3xl dark:text-white"
+          class="text-xl font-extrabold text-dark dark:text-white md:text-2xl lg:text-3xl"
         >
           宝宝识汉字
         </h1>
@@ -45,12 +45,12 @@
         <button
           id="theme-toggle"
           (click)="toggleDarkMode()"
-          class="bg-neutral dark:bg-dark/50 cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="cursor-pointer rounded-full bg-neutral p-2 transition-colors duration-200 hover:bg-gray-200 dark:bg-dark/50 dark:hover:bg-gray-800"
         >
           @if (darkMode()) {
-            <i class="fa-solid fa-sun text-dark text-xl dark:text-white"></i>
+            <i class="fa-solid fa-sun text-xl text-dark dark:text-white"></i>
           } @else {
-            <i class="fa-solid fa-moon text-dark text-xl dark:text-white"></i>
+            <i class="fa-solid fa-moon text-xl text-dark dark:text-white"></i>
           }
         </button>
 
@@ -58,10 +58,10 @@
         <button
           id="about-btn"
           (click)="showAbout = true"
-          class="bg-neutral dark:bg-dark/50 cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="cursor-pointer rounded-full bg-neutral p-2 transition-colors duration-200 hover:bg-gray-200 dark:bg-dark/50 dark:hover:bg-gray-800"
         >
           <i
-            class="fa-solid fa-info-circle text-dark text-xl dark:text-white"
+            class="fa-solid fa-info-circle text-xl text-dark dark:text-white"
           ></i>
         </button>
       </div>
@@ -69,16 +69,18 @@
   </header>
 
   <!-- 主内容区 -->
-  <main class="container mx-auto flex-1 px-4 pt-24 pb-16">
+  <main
+    class="container mx-auto flex flex-1 items-center justify-center px-4 pb-16 pt-24"
+  >
     <router-outlet />
   </main>
 
   <!-- 页脚 -->
-  <footer class="bg-dark pt-2 pb-4 text-white">
+  <!-- <footer class="bg-dark pb-4 pt-2 text-white">
     <div class="mt-2 border-t border-gray-700 pt-4 text-center text-gray-500">
       <p>&copy; 2025 宝宝识汉字 版权所有</p>
     </div>
-  </footer>
+  </footer> -->
 
   <!-- 关于模态框 -->
   <div
@@ -91,7 +93,7 @@
     >
       <div class="p-8">
         <div class="mb-4 flex items-center justify-between">
-          <h3 class="text-dark text-2xl font-bold dark:text-white">关于我们</h3>
+          <h3 class="text-2xl font-bold text-dark dark:text-white">关于我们</h3>
           <button
             id="close-modal"
             (click)="showAbout = false"
@@ -108,24 +110,24 @@
           </p>
 
           <div class="border-t border-gray-200 pt-4 dark:border-gray-700">
-            <h4 class="text-dark mb-2 text-2xl font-bold dark:text-white">
+            <h4 class="mb-2 text-2xl font-bold text-dark dark:text-white">
               主要功能
             </h4>
             <ul class="space-y-2 text-xl text-gray-600 dark:text-gray-300">
               <li class="flex items-start">
-                <i class="fa-solid fa-check-circle text-accent mt-1 mr-2"></i>
+                <i class="fa-solid fa-check-circle mr-2 mt-1 text-accent"></i>
                 <span>趣味学习模式，让宝宝在游戏中认识汉字</span>
               </li>
               <li class="flex items-start">
-                <i class="fa-solid fa-check-circle text-accent mt-1 mr-2"></i>
+                <i class="fa-solid fa-check-circle mr-2 mt-1 text-accent"></i>
                 <span>标准发音指导，帮助宝宝正确发音</span>
               </li>
               <li class="flex items-start">
-                <i class="fa-solid fa-check-circle text-accent mt-1 mr-2"></i>
+                <i class="fa-solid fa-check-circle mr-2 mt-1 text-accent"></i>
                 <span>丰富的游戏内容，巩固学习成果</span>
               </li>
               <li class="flex items-start">
-                <i class="fa-solid fa-check-circle text-accent mt-1 mr-2"></i>
+                <i class="fa-solid fa-check-circle mr-2 mt-1 text-accent"></i>
                 <span>家长指南，提供专业的教育建议</span>
               </li>
             </ul>
@@ -137,7 +139,7 @@
         <button
           id="got-it"
           (click)="showAbout = false"
-          class="bg-primary hover:bg-primary/90 w-full cursor-pointer rounded-xl py-3 text-xl font-bold text-white transition-colors duration-200"
+          class="w-full cursor-pointer rounded-xl bg-primary py-3 text-xl font-bold text-white transition-colors duration-200 hover:bg-primary/90"
         >
           知道了
         </button>

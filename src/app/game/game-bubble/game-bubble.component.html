@@ -1,0 +1,25 @@
+<div class="game-container">
+  <div
+    *ngIf="gameStatus == 'init'"
+    class="flex h-full w-full items-center justify-center text-5xl text-gray-800 dark:text-gray-200"
+  >
+    {{ target() }}
+  </div>
+  <div
+    [ngClass]="{ hidden: gameStatus !== 'playing' }"
+    id="gameContainer"
+  ></div>
+  <div
+    *ngIf="gameStatus == 'end'"
+    class="game-over w-48 sm:w-48 md:w-64 lg:w-80 xl:w-96 2xl:w-[500px]"
+  >
+    <h2 class="text-xl">游戏结束！</h2>
+    <p class="text-base">最终得分: {{ currentScore }}</p>
+    <button
+      (click)="restartGame()"
+      class="mt-4 rounded-lg bg-blue-500 px-4 py-2 text-white transition-colors duration-200 hover:bg-blue-600"
+    >
+      重玩游戏
+    </button>
+  </div>
+</div>

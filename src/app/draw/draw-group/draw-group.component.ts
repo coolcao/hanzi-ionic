@@ -8,7 +8,6 @@ import { Store } from '../../store/store';
 import { Hanzi } from '../../hanzi.types';
 import { AudioService } from '../../service/audio.service';
 
-
 @Component({
   selector: 'app-draw-group',
   standalone: false,
@@ -18,6 +17,21 @@ import { AudioService } from '../../service/audio.service';
 export class DrawGroupComponent implements OnInit, AfterViewInit {
   @ViewChild('writerContainer')
   private writerContainer!: ElementRef;
+
+  private readonly quizCallback = {
+    onMistake: () => {
+      this.audioService.stopAll();
+      this.audioService.preload('错误', `/assets/audios/错误.mp3`).then(() => {
+        return this.audioService.play('错误');
+      });
+    },
+    onComplete: () => {
+      this.audioService.stopAll();
+      this.audioService.preload('success', `/assets/audios/success.mp3`).then(() => {
+        return this.audioService.play('success');
+      });
+    },
+  };
 
   // 屏幕宽度和高度
   innerWidth = signal(window.innerWidth);
@@ -139,13 +153,14 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
       // radicalColor: '#ff0000', // 偏旁部首颜色
       strokeAnimationSpeed: 1, // 动画速度（1=正常）
       delayBetweenStrokes: 800, // 笔画间隔时间
+      showHintAfterMisses: 1, // 错误多少次后显示提示
       charDataLoader: (char: string) => {
         return lastValueFrom(this.http.get<CharacterJson>(`/assets/hanzi-writer-data/${char}.json`));
       },
 
     });
 
-    this.writer.quiz();
+    this.writer.quiz(this.quizCallback);
   }
 
   showDetail(hanzi: Hanzi) {
@@ -183,7 +198,7 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
     if (!this.writer) {
       return;
     }
-    this.writer.quiz();
+    this.writer.quiz(this.quizCallback);
   }
 
   async playAudio(hanzi: Hanzi | null) {

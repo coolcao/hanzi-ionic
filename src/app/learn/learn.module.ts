@@ -6,6 +6,7 @@ import { LearnRoutingModule } from 'src/app/learn/learn-routing.module';
 
 import { LearnBoardComponent } from 'src/app/learn/learn-board/learn-board.component';
 import { LearnGroupComponent } from 'src/app/learn/learn-group/learn-group.component';
+import { LearnDetailComponent } from 'src/app/learn/learn-detail/learn-detail.component';
 
 @NgModule({
   providers: [
@@ -14,6 +15,7 @@ import { LearnGroupComponent } from 'src/app/learn/learn-group/learn-group.compo
   declarations: [
     LearnBoardComponent,
     LearnGroupComponent,
+    LearnDetailComponent,
   ],
   imports: [
     CommonModule,

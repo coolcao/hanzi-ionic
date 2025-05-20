@@ -1,6 +1,8 @@
-import { Component, effect, inject, signal } from '@angular/core';
-import { Store } from './store/store';
+import { Component, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { AudioService } from 'src/app/service/audio.service';
+import { Store } from './store/store';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  store = inject(Store);
-  router = inject(Router);
+  private store = inject(Store);
+  private router = inject(Router);
+  private audioService = inject(AudioService);
 
   back = this.store.back;
 
@@ -43,6 +46,7 @@ export class AppComponent {
     if (!this.back()) {
       return;
     }
+    this.audioService.stopAll();
     this.router.navigateByUrl(this.back()!.path);
   }
 
