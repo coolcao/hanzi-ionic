@@ -11,15 +11,23 @@
   ></div>
   <div
     *ngIf="gameStatus == 'end'"
-    class="game-over w-48 sm:w-48 md:w-64 lg:w-80 xl:w-96 2xl:w-[500px]"
+    class="game-over flex w-64 flex-col items-center justify-center sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-[500px]"
   >
-    <h2 class="text-xl">游戏结束！</h2>
-    <p class="text-base">最终得分: {{ currentScore }}</p>
+    <h2 class="text-3xl">游戏结束！</h2>
+    <p class="text-xl">最终得分: {{ currentScore }}</p>
     <button
       (click)="restartGame()"
-      class="mt-4 rounded-lg bg-blue-500 px-4 py-2 text-white transition-colors duration-200 hover:bg-blue-600"
+      class="mt-4 flex items-center gap-2 rounded-3xl bg-pink-400 px-6 py-3 text-lg font-bold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-pink-500 hover:shadow-lg"
     >
-      重玩游戏
+      <i class="fa-solid fa-rotate"></i>
+      重玩 🎮
+    </button>
+    <button
+      [routerLink]="['/']"
+      class="m-4 flex items-center gap-2 rounded-3xl bg-purple-400 px-6 py-3 text-lg font-bold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-purple-500 hover:shadow-lg"
+    >
+      <i class="fa-solid fa-house"></i>
+      回家 🏠
     </button>
   </div>
 </div>

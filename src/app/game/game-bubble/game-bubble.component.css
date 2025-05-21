@@ -16,13 +16,3 @@
   text-align: center;
   border-radius: 10px;
 }
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
