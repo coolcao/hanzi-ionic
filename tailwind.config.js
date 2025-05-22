@@ -14,7 +14,7 @@ module.exports = {
         dark: '#2a363b'
       },
       fontFamily: {
-        'k': ["STKaiti", 'sans-serif']
+        'k': ['BanRuoKai', "STKaiti", 'sans-serif'],
       }
     },
   },

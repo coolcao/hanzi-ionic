@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "BanRuoKai";
+  font-weight: 900;
+  src: url("assets/webfonts/AaBanRuoKaiShu-2.ttf") format("truetype");
+}
+
 /* 设置全局字体 */
 /* :root {
   font-family: "KaiTi", "楷体", STKaiti, "华文楷体", serif;
