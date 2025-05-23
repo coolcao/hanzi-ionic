@@ -13,9 +13,10 @@
     *ngIf="gameStatus == 'end'"
     class="game-over flex w-64 flex-col items-center justify-center sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-[500px]"
   >
-    <h2 class="text-3xl">游戏结束！</h2>
-    <p class="text-xl">最终得分: {{ currentScore }}</p>
+    <p class="text-3xl">最终得分: {{ currentScore }}</p>
+    <p class="text-xl">{{ resultMsg }}</p>
     <button
+      [disabled]="playing"
       (click)="restartGame()"
       class="mt-4 flex items-center gap-2 rounded-3xl bg-pink-400 px-6 py-3 text-lg font-bold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-pink-500 hover:shadow-lg"
     >
@@ -23,6 +24,7 @@
       重玩 🎮
     </button>
     <button
+      [disabled]="playing"
       [routerLink]="['/']"
       class="m-4 flex items-center gap-2 rounded-3xl bg-purple-400 px-6 py-3 text-lg font-bold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-purple-500 hover:shadow-lg"
     >

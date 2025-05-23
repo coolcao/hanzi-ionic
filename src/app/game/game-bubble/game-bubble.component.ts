@@ -4,7 +4,6 @@ import { Store } from 'src/app/store/store';
 import { Game, Scale } from 'phaser';
 
 import { MainScene } from 'src/app/game/game-bubble/main-scene';
-import { timer } from 'rxjs';
 import { AudioService } from 'src/app/service/audio.service';
 
 @Component({
@@ -22,8 +21,10 @@ export class GameBubbleComponent implements OnInit, AfterViewInit, OnDestroy {
   private game!: Game;
 
   currentScore = 0;
+  resultMsg = '';
   gameStatus: 'init' | 'playing' | 'end' | 'error' = 'init';
   errorMsg = '';
+  playing = false;
 
   groupId = signal('');
   group = computed(() => {
@@ -67,6 +68,7 @@ export class GameBubbleComponent implements OnInit, AfterViewInit, OnDestroy {
   startGame() {
     this.currentScore = 0;
     this.gameStatus = 'init';
+    this.resultMsg = '';
     const config: Phaser.Types.Core.GameConfig = {
       mode: Scale.FIT,
       type: Phaser.AUTO,
@@ -87,6 +89,39 @@ export class GameBubbleComponent implements OnInit, AfterViewInit, OnDestroy {
       this.game.events.on('gameEnd', (score: number) => {
         this.currentScore = score;
         this.gameStatus = 'end';
+
+        // 根据分数设置不同的提示消息
+        if (score >= 80) {
+          this.resultMsg = '🌟 太棒了！继续保持！ 🎉';
+        } else if (score >= 60) {
+          this.resultMsg = '👍 做得不错，还可以更好！ 💪';
+        } else if (score >= 40) {
+          this.resultMsg = '💪 再加把劲，你可以的！ ✨';
+        } else {
+          this.resultMsg = '🌱 别灰心，继续努力！ 🎯';
+        }
+
+        // 停止所有音频
+        this.audioService.stopAll();
+        // 播放结束音效
+        this.playing = true;
+        this.audioService.preload('success', `${this.baseAudioPath}/success.mp3`).then(() => {
+          return this.audioService.play('success');
+        }).then(() => {
+          if (score >= 80) {
+            return this.audioService.preload('tip', `${this.baseAudioPath}/score_tip_1.mp3`);
+          } else if (score >= 60) {
+            return this.audioService.preload('tip', `${this.baseAudioPath}/score_tip_2.mp3`);
+          } else if (score >= 40) {
+            return this.audioService.preload('tip', `${this.baseAudioPath}/score_tip_3.mp3`);
+          } else {
+            return this.audioService.preload('tip', `${this.baseAudioPath}/score_tip_4.mp3`);
+          }
+        }).then(() => {
+          return this.audioService.play('tip');
+        }).then(() => {
+          this.playing = false;
+        });
       });
     }).catch(err => {
       this.gameStatus = 'error';
