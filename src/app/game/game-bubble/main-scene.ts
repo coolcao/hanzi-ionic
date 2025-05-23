@@ -85,18 +85,21 @@ export class MainScene extends Scene {
 
       const bubbleImage = this.add.image(0, 0, 'bubble').setScale(0.35);
       const text = this.add.text(0, 0, hanzi, {
-        fontSize: '36px',
-        color: Phaser.Utils.Array.GetRandom(['#020617', '#450a0a', '#431407', '#b91c1c', '#c2410c', '#3f6212', '#047857', '#155e75', '#6d28d9', '#c026d3', '#db2777', '#831843', '#be123c', '#6b21a8', '#312e81', '#0c4a6e', '#059669', '#3f6212', '#facc15']),
-        // color: Phaser.Utils.Array.GetRandom([
-        //   '#000000', // 纯黑
-        //   '#8B0000', // 深红
-        //   '#4B0082', // 靛蓝
-        //   '#000080', // 海军蓝
-        //   '#002A3A', // 深蓝灰
-        //   '#330066', // 暗紫
-        //   '#660033'  // 深酒红
-        // ]),
-        fontStyle: 'bold'
+        fontSize: '40px',
+        // color: Phaser.Utils.Array.GetRandom(['#020617', '#450a0a', '#431407', '#b91c1c', '#c2410c', '#3f6212', '#047857', '#155e75', '#6d28d9', '#c026d3', '#db2777', '#831843', '#be123c', '#6b21a8', '#312e81', '#0c4a6e', '#059669', '#3f6212', '#facc15']),
+        color: Phaser.Utils.Array.GetRandom([
+          "#8b008b",
+        ]),
+        fontStyle: 'bold',
+        fontFamily: 'BanRuoKai',
+        shadow: {
+          color: '#ffff00',
+          offsetX: 1,
+          offsetY: 1,
+          blur: 0,
+          stroke: true,
+          fill: true
+        }
       }).setOrigin(0.5, 0.5);
 
       const container = this.add.container(x, y, [bubbleImage, text]);
