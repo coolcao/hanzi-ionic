@@ -14,7 +14,9 @@
     class="game-over flex w-64 flex-col items-center justify-center sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-[500px]"
   >
     <p class="text-3xl">最终得分: {{ currentScore }}</p>
-    <p class="text-xl">{{ resultMsg }}</p>
+    <p class="text-base sm:text-base md:text-xl lg:text-xl xl:text-2xl">
+      {{ resultMsg }}
+    </p>
     <button
       [disabled]="playing"
       (click)="restartGame()"
