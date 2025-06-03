@@ -281,6 +281,113 @@ export const data: HanziGroup[] = [
     ],
   },
   {
+    id: 'animal',
+    group: '动物世界',
+    desc: '包含动物相关的汉字。',
+    icon: 'fa-solid fa-paw',
+    character: '猫',
+    color: '#ffc700',
+    hanzi: [
+      {
+        character: '猫',
+        pinyin: pinyin('猫'),
+        words: ['小猫', '猫咪'],
+        sentence: '我家养了一只可爱的猫咪。',
+        image: 'assets/images/learn/characters/猫.png',
+      }, {
+        character: '狗',
+        pinyin: pinyin('狗'),
+        words: ['小狗', '狗狗'],
+        sentence: '小狗狗在院子里快乐的追逐蝴蝶。',
+        image: 'assets/images/learn/characters/狗.png',
+      }, {
+        character: '兔',
+        pinyin: pinyin('兔'),
+        words: ['兔子', '小白兔'],
+        sentence: '小兔子在高兴的吃着最爱的胡萝卜。',
+        image: 'assets/images/learn/characters/兔.png',
+      }, {
+        character: '羊',
+        pinyin: pinyin('羊'),
+        words: ['小羊', '山羊', '绵羊'],
+        sentence: '小羊在草地上快乐地吃草。',
+        image: 'assets/images/learn/characters/羊.png',
+      }, {
+        character: '牛',
+        pinyin: pinyin('牛'),
+        words: ['小牛', '黄牛', '水牛'],
+        sentence: '大黄牛在农场里帮忙农民伯伯耕地。',
+        image: 'assets/images/learn/characters/牛.png',
+      }, {
+        character: '马',
+        pinyin: pinyin('马'),
+        words: ['白马', '木马', '马车'],
+        sentence: '小马在草原上欢快地奔跑，尾巴甩来甩去。',
+        image: 'assets/images/learn/characters/马.png',
+      }, {
+        character: '鸡',
+        pinyin: pinyin('鸡'),
+        words: ['小鸡', '公鸡'],
+        sentence: '公鸡每天早上 “喔喔喔” 打鸣，叫大家起床。',
+        image: 'assets/images/learn/characters/鸡.png',
+      }, {
+        character: '鸭',
+        pinyin: pinyin('鸭'),
+        words: ['鸭子', '野鸭'],
+        sentence: '小鸭子在河里快乐的游泳玩耍。',
+        image: 'assets/images/learn/characters/鸭.png',
+      }, {
+        character: '猪',
+        pinyin: pinyin('猪'),
+        words: ['小猪', '猪仔'],
+        sentence: '小猪们在猪圈里快乐地打滚，浑身沾满了泥土。',
+        image: 'assets/images/learn/characters/猪.png',
+      }, {
+        character: '鹿',
+        pinyin: pinyin('鹿'),
+        words: ['小鹿', '长颈鹿'],
+        sentence: '长颈鹿伸着长长的脖子，轻松地吃到了树梢上的嫩叶。',
+        image: 'assets/images/learn/characters/鹿.png',
+      }, {
+        character: '鼠',
+        pinyin: pinyin('鼠'),
+        words: ['小仓鼠', '老鼠'],
+        sentence: '我家养了一只小仓鼠，可爱极了。',
+        image: 'assets/images/learn/characters/鼠.png',
+      }, {
+        character: '猴',
+        pinyin: pinyin('猴'),
+        words: ['猴子', '金丝猴'],
+        sentence: '金丝猴在森林里跳跃，好像在玩杂技。',
+        image: 'assets/images/learn/characters/猴.png',
+      }, {
+        character: '鹰',
+        pinyin: pinyin('鹰'),
+        words: ['雄鹰', '老鹰', '鹰击长空'],
+        sentence: '一只雄鹰在蔚蓝的天空翱翔。',
+        image: 'assets/images/learn/characters/鹰.png',
+      }, {
+        character: '虎',
+        pinyin: pinyin('虎'),
+        words: ['老虎', '狐假虎威'],
+        sentence: '老虎是森林里的 “百兽之王”，走起路来威风凛凛。',
+        image: 'assets/images/learn/characters/虎.png',
+      }, {
+        character: '龙',
+        pinyin: pinyin('龙'),
+        words: ['恐龙', '叶公好龙'],
+        sentence: '万里长城蜿蜒盘旋，好似一条威严的巨龙。',
+        image: 'assets/images/learn/characters/龙.png',
+      }, {
+        character: '蛇',
+        pinyin: pinyin('蛇'),
+        words: ['小蛇', '毒蛇'],
+        sentence: '遇到蛇可要小心了，不要被它咬了，它的毒液会让人受伤哦。',
+        image: 'assets/images/learn/characters/蛇.png',
+      }
+    ]
+  },
+  {
     id: 'logic',
     group: '方位逻辑',
     desc: '包含方位和逻辑的相关汉字。',

@@ -5,6 +5,7 @@ import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { AudioService } from 'src/app/service/audio.service';
+import { data } from 'src/app/hanzi.data'; './hanzi.data'
 import { Store } from './store/store';
 
 @Component({
@@ -28,10 +29,14 @@ export class AppComponent implements OnInit {
     effect(() => {
       if (this.darkMode()) {
         document.body.classList.add('dark');
-        this.updateStatusBarColor(this.darkMode());
+        if (this.getPlatform() === 'android' || this.getPlatform() === 'ios') {
+          this.updateStatusBarColor(this.darkMode());
+        }
       } else {
-        this.updateStatusBarColor(this.darkMode());
         document.body.classList.remove('dark');
+        if (this.getPlatform() === 'android' || this.getPlatform() === 'ios') {
+          this.updateStatusBarColor(this.darkMode());
+        }
       }
 
       if (this.store.bodyOverflowHidden()) {
@@ -43,10 +48,20 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.getPlatform() === 'web') {
-      return;
+    for (const g of data) {
+      if (g.id === 'animal') {
+        for (const c of g.hanzi) {
+          console.log(c.character + '\n' + c.words.join(',') + '\n' + c.sentence);
+          console.log('------------');
+
+
+        }
+      }
     }
-    this.initializeApp();
+    if (this.getPlatform() === 'android' || this.getPlatform() === 'ios') {
+      this.initializeApp();
+    }
+
   }
 
   toggleDarkMode() {
