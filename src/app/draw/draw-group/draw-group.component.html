@@ -59,29 +59,22 @@
     <h3 class="mb-8 text-2xl font-bold text-dark dark:text-white">更多主题</h3>
 
     <div class="grid grid-cols-1 gap-6 text-xl sm:grid-cols-2 lg:grid-cols-3">
-      <div
-        class="pop flex transform cursor-pointer items-center space-x-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg dark:bg-gray-800"
-      >
+      @for (group of otherGroups(); track $index) {
         <div
-          class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20"
+          [style.--dynamic-color]="group.color"
+          [routerLink]="['/', 'draw', 'group', group.id]"
+          class="pop flex transform cursor-pointer items-center space-x-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg dark:bg-gray-800"
         >
-          <i class="fa-solid fa-cloud text-2xl text-secondary"></i>
+          <div
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20"
+          >
+            <i [ngClass]="[group.icon]" class="text-dynamic text-2xl"></i>
+          </div>
+          <span class="font-k text-lg font-bold text-dark dark:text-white">{{
+            group.group
+          }}</span>
         </div>
-        <span class="font-k text-lg font-bold text-dark dark:text-white"
-          >自然现象</span
-        >
-      </div>
-
-      <div
-        class="pop flex cursor-pointer items-center space-x-3 rounded-2xl bg-white p-4 shadow-md dark:bg-gray-800"
-      >
-        <div
-          class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20"
-        >
-          <i class="fa-solid fa-sun text-accent"></i>
-        </div>
-        <span class="font-k font-bold text-dark dark:text-white">天气</span>
-      </div>
+      }
     </div>
   </section>
 </main>

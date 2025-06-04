@@ -60,6 +60,14 @@ export class DrawGroupComponent implements OnInit, AfterViewInit {
     return this.group()?.color || 'primary';
   });
 
+  // 其他分组
+  otherGroups = computed(() => {
+    return this.groups().filter(g => g.id !== this.groupId()).sort((a,b) => {
+      // 随机排序
+      return Math.random() - 0.5;
+    }).slice(0, 3);
+  });
+
   groupId = signal('');
 
   hanzi = signal<Hanzi | null>(null);
