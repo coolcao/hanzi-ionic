@@ -6,6 +6,7 @@
 
 - Ionic & Capacitor：打包为移动端 App 的框架
 - Angular：前端框架
+- phaser: 游戏引擎
 - Tailwind CSS：CSS 框架
 - howler: 音频播放库
 - hanzi-writer: 汉字书写库
