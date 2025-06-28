@@ -147,3 +147,44 @@
     </div>
   </div>
 </main>
+
+<div
+  *ngIf="showExit()"
+  class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50 backdrop-blur-md"
+  id="exitGameModal"
+  aria-labelledby="exitGameModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="relative mx-auto w-full max-w-sm rounded-xl bg-neutral p-6 text-dark shadow-lg dark:bg-dark dark:text-neutral sm:max-w-md"
+  >
+    <div class="flex items-start justify-between">
+      <h3
+        class="text-lg font-medium leading-6 text-dark dark:text-neutral"
+        id="exitGameModalLabel"
+      >
+        退出应用
+      </h3>
+    </div>
+    <div class="mt-4">
+      <p class="text-sm text-gray-500 dark:text-gray-300">确定要退出应用吗？</p>
+    </div>
+    <div class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        (click)="showExit.set(false)"
+        class="rounded-md border border-accent bg-accent px-4 py-2 text-sm text-dark shadow-sm hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:border-accent dark:bg-accent dark:hover:bg-accent/90"
+        data-bs-dismiss="modal"
+      >
+        取消
+      </button>
+      <button
+        type="button"
+        class="rounded-md border border-primary bg-primary px-4 py-2 text-sm text-dark shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-primary dark:bg-primary dark:hover:bg-primary/90"
+        (click)="exitGame()"
+      >
+        退出
+      </button>
+    </div>
+  </div>
+</div>

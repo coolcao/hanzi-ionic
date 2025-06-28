@@ -1,8 +1,9 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { App, BackButtonListenerEvent } from '@capacitor/app';
 
 import { AudioService } from 'src/app/service/audio.service';
 import { data } from 'src/app/hanzi.data'; './hanzi.data'
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
   title = '宝宝识汉字';
   showAbout = false;
   darkMode = this.store.darkMode;
+
+  showExit = signal(false);
 
   constructor() {
     effect(() => {
@@ -60,7 +63,9 @@ export class AppComponent implements OnInit {
     }
     if (this.getPlatform() === 'android' || this.getPlatform() === 'ios') {
       this.initializeApp();
+      this.setupBackEvent();
     }
+
 
   }
 
@@ -104,6 +109,21 @@ export class AppComponent implements OnInit {
     StatusBar.setOverlaysWebView({ overlay: false }); // 关键设置
     // 初始化状态栏颜色
     this.updateStatusBarColor(this.darkMode());
+  }
+
+  exitGame() {
+    if (Capacitor.getPlatform() === 'android') {
+      (App as any).exitApp(); // 强制退出（Android）
+    } else {
+      App.minimizeApp(); // iOS 最小化
+    }
+    this.showExit.set(false);
+  }
+
+  private setupBackEvent() {
+    App.addListener('backButton', async (event: BackButtonListenerEvent) => {
+      this.showExit.set(true);
+    });
   }
 
 }
